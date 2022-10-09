@@ -11,11 +11,12 @@ public class HibernateApplication {
         try {
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 1);
-            System.out.println(person.getNames());
-            System.out.println(person.getAge());
+            Person person = new Person(27, "Egor");
+            session.save(person);
 
             session.getTransaction().commit();
+
+            System.out.println(person.getId());
         } finally {
             sessionFactory.close();
         }
