@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Person")
 @Data
@@ -19,8 +21,19 @@ public class Person {
     @Column(name = "names")
     private String names;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Item> items;
+
     public Person(int age, String names) {
         this.age = age;
         this.names = names;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", names='" + names + '\'' +
+                '}';
     }
 }
