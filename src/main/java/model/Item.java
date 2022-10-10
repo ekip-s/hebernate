@@ -22,8 +22,9 @@ public class Item {
     @Column(name = "item_name")
     private String itemName;
 
-    public Item(String itemName) {
+    public Item(String itemName, Person person) {
         this.itemName = itemName;
+        this.owner = person;
     }
 
     @Override
